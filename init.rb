@@ -12,11 +12,17 @@ Dispatcher.to_prepare :redmine_cc_addresses do
   unless Issue.included_modules.include? RedmineCcAddresses::IssuePatch
     Issue.send(:include, RedmineCcAddresses::IssuePatch)
   end
-  
+
   require_dependency 'mailer'
   unless Mailer.included_modules.include? RedmineCcAddresses::MailerPatch
     Mailer.send(:include, RedmineCcAddresses::MailerPatch)
   end
+
+  require_dependency 'mail_handler'
+  unless MailHandler.included_modules.include? RedmineCcAddresses::MailHandlerPatch
+    MailHandler.send(:include, RedmineCcAddresses::MailHandlerPatch)
+  end
+
 end
 
 Redmine::Plugin.register :redmine_cc_addresses do
