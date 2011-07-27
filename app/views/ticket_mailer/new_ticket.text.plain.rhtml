@@ -1,7 +1,18 @@
-Thanks for your e-mail. A new ticket has been created.
+Greetings,
 
-----------------------------------------
-<%= render :partial => "mailer/issue_text_plain", :locals => { :issue => @issue, :issue_url => @issue_url } %>
+This message has been automatically generated in response to the
+creation of a trouble ticket regarding: "<%= h(@issue.subject) %>",
+a summary of which appears below.
 
-----------------------------------------
-Your e-mail will be answered by a human asap,
+There is no need to reply to this message right now. Your ticket
+has been assigned an ID of <%= "[#{@issue.project.name} - #{@issue.tracker.name} ##{@issue.id}]" %>.
+
+Please include the string:
+
+<%= "[#{@issue.project.name} - #{@issue.tracker.name} ##{@issue.id}]" %>
+
+in the subject line of all future correspondence about this issue.
+To do so, you may reply to this message.
+
+Thank you for your request,
+Support team | <%= Setting.mail_from %>

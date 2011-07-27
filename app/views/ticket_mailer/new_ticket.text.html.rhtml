@@ -9,27 +9,32 @@ body {
 h1, h2, h3 { font-family: "Trebuchet MS", Verdana, sans-serif; margin: 0px; }
 h1 { font-size: 1.2em; }
 h2, h3 { font-size: 1.1em; }
-a, a:link, a:visited { color: #2A5685;}
-a:hover, a:active { color: #c61a1a; }
-a.wiki-anchor { display: none; }
-hr {
-  width: 100%;
-  height: 1px;
-  background: #ccc;
-  border: 0;
-}
-.footer {
-  font-size: 0.8em;
-  font-style: italic;
-}
 </style>
 </head>
 <body>
-Thanks for your e-mail. A new ticket has been created.
-<hr />
-<%= render :partial => "mailer/issue_text_html", :locals => { :issue => @issue, :issue_url => @issue_url } %>
-<hr />
-Your e-mail will be answered by a human asap,
+Greetings,
+<br />
+<br />
+This message has been automatically generated in response to the
+creation of a trouble ticket regarding: "<%= h(@issue.subject) %>",
+a summary of which appears below.
+<br />
+<br />
+There is no need to reply to this message right now. Your ticket
+has been assigned an ID of <%= "[#{@issue.project.name} - #{@issue.tracker.name} ##{@issue.id}]" %>.
+<br />
+<br />
+Please include the string:
+<br />
+<br />
+<%= "[#{@issue.project.name} - #{@issue.tracker.name} ##{@issue.id}]" %>
+<br />
+<br />
+in the subject line of all future correspondence about this issue.
+To do so, you may reply to this message.
+<br />
+<br />
+Thank you for your request,
+Support team | <%= link_to Setting.mail_from, Setting.mail_from %>
 </body>
 </html>
-
