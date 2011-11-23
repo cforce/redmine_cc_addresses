@@ -2,6 +2,10 @@ class TicketMailer < Mailer
   layout false
 
   def new_ticket(issue, email)
+    TicketMailer.new_ticket_headers.each do |k, v|
+      headers[k] = v
+    end
+
     redmine_headers 'Project' => issue.project.identifier,
                   'Issue-Id' => issue.id,
                   'Issue-Author' => issue.author.login
@@ -18,5 +22,15 @@ class TicketMailer < Mailer
     content_type "multipart/alternative"
     part :content_type => "text/plain", :body => render(:file => "new_ticket.text.plain.rhtml", :body => body)
     part :content_type => "text/html", :body => render_message("new_ticket.text.html.rhtml", body)
+  end
+
+  class << self
+    def new_ticket_headers=(headers)
+      @new_ticket_headers = headers if headers.is_a? Hash
+    end
+
+    def new_ticket_headers
+      @new_ticket_headers || []
+    end
   end
 end

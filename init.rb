@@ -23,6 +23,14 @@ Dispatcher.to_prepare :redmine_cc_addresses do
     MailHandler.send(:include, RedmineCcAddresses::MailHandlerPatch)
   end
 
+  config_file = RAILS_ROOT + '/config/tickets.yml'
+  if File.file?(config_file)
+    config = YAML::load_file(config_file)
+    if config.is_a?(Hash) && config.has_key?(Rails.env)
+      TicketMailer.new_ticket_headers = config[Rails.env]['new_ticket_headers']
+    end
+  end
+
 end
 
 Redmine::Plugin.register :redmine_cc_addresses do
