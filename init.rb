@@ -7,6 +7,7 @@ Dispatcher.to_prepare :redmine_cc_addresses do
   require_dependency 'cc_addresses_issue_show_hook'
   require_dependency 'redmine_cc_addresses/hooks/view_issues_edit_notes_bottom_hook'
   require_dependency 'redmine_cc_addresses/hooks/controller_issues_edit_before_save_hook'
+  require_dependency 'redmine_cc_addresses/hooks/view_issues_history_journal_bottom_hook'
 
   require_dependency 'issue'
   # Guards against including the module multiple time (like in tests)
