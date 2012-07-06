@@ -1,0 +1,19 @@
+Greetings,
+
+This message has been automatically generated in response to the
+creation of a trouble ticket regarding: "<%= h(@issue.subject) %>",
+a summary of which appears below.
+
+There is no need to reply to this message right now. Your ticket
+has been assigned an ID of <%= "[#{@issue.project.name} - #{@issue.tracker.name} ##{@issue.id}]" %>.
+
+Please include the string:
+
+<%= "[#{@issue.project.name} - #{@issue.tracker.name} ##{@issue.id}]" %>
+
+in the subject line of all future correspondence about this issue.
+To do so, you may reply to this message.
+
+Please note, we strive to resolve all issues within one business day.
+Thank you for your request,
+Support team | <%= @from %>
